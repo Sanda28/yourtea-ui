@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Placeholder Header -->
+<div id="header-placeholder"></div>
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content w-100">
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-4">
+  <div class="container-fluid">
+    <h5 class="m-0 fw-bold text-success">Data Laporan</h5>
+  </div>
+</nav>
+
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+
+            <!-- Tombol Aksi -->
+            <a href="laporan_cetak.html" target="_blank" class="btn btn-primary mb-3">
+              <i class="fas fa-print"></i> Print
+            </a>
+            <a href="laporanpdf.html" target="_blank" class="btn btn-warning mb-3">
+              <i class="far fa-file-pdf"></i> Download PDF
+            </a>
+            <a href="laporan_excel.xls" class="btn btn-success mb-3">
+              <i class="far fa-file-excel"></i> Export ke Excel
+            </a>
+
+            <!-- Tabel -->
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="table-light">
+                  <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Jabatan</th>
+                    <th>Alamat</th>
+                    <th>No Telp</th>
+                    <th>Tanggal Masuk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Andi Saputra</td>
+                    <td>Laki-laki</td>
+                    <td>Barista</td>
+                    <td>Jl. Mawar No. 10</td>
+                    <td>081234567890</td>
+                    <td>12 Januari 2023</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Siti Aminah</td>
+                    <td>Perempuan</td>
+                    <td>Kasir</td>
+                    <td>Jl. Melati No. 25</td>
+                    <td>089912345678</td>
+                    <td>5 Maret 2024</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Bayu Setiawan</td>
+                    <td>Laki-laki</td>
+                    <td>Manager</td>
+                    <td>Jl. Kenanga No. 3</td>
+                    <td>085612345679</td>
+                    <td>20 Juni 2022</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Content -->
+
+      <!-- Footer -->
+      <div id="footer-placeholder"></div>
+    </div>
+  </div>
+
+  <!-- Script untuk memuat template -->
+  <script>
+    function loadTemplate(id, file) {
+      fetch("template/" + file)
+        .then(res => res.text())
+        .then(html => document.getElementById(id).innerHTML = html);
+    }
+
+    loadTemplate("header-placeholder", "header.html");
+    loadTemplate("sidebar-placeholder", "sidebar.html");
+    loadTemplate("footer-placeholder", "footer.html");
+  </script>
+</body>
+</html>

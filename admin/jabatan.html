@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Placeholder Header -->
+<div id="header-placeholder"></div>
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="content w-100">
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-4">
+        <div class="container-fluid">
+            <h5 class="m-0 fw-bold text-success">Data Jabatan</h5>
+        </div>
+        </nav>
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        
+
+        <div class="row">
+          <!-- Form Tambah Jabatan -->
+          <div class="col-md-4">
+            <div class="card shadow">
+              <div class="card-header bg-primary text-white">
+                <h6 class="m-0 fw-bold">Tambah Jabatan</h6>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="mb-2">
+                    <input type="text" class="form-control" placeholder="Masukkan Jabatan" />
+                  </div>
+                  <div class="mb-2">
+                    <input type="text" class="form-control" placeholder="Masukkan Gaji Per Hari" />
+                  </div>
+                  <div class="mb-2">
+                    <input type="text" class="form-control" placeholder="Masukkan Tunjangan Per Hari" />
+                  </div>
+                  <div class="text-end">
+                    <button type="reset" class="btn btn-danger"><i class="fas fa-ban"></i> Batal</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Tambah</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabel Data Jabatan -->
+          <div class="col-md-8">
+            <div class="card shadow">
+              <div class="card-header bg-primary text-white">
+                <h6 class="m-0 fw-bold">Daftar Jabatan</h6>
+              </div>
+              <div class="card-body">
+                <table class="table table-bordered table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th>#</th>
+                      <th>Jabatan</th>
+                      <th>Gaji Per Hari</th>
+                      <th>Tunjangan Per Hari</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Manager</td>
+                      <td>Rp200.000</td>
+                      <td>Rp50.000</td>
+                      <td>
+                        <a href="#" class="badge bg-info text-white"><i class="fas fa-edit"></i> Ubah</a>
+                        <a href="#" class="badge bg-danger text-white"><i class="fas fa-trash"></i> Hapus</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Kasir</td>
+                      <td>Rp150.000</td>
+                      <td>Rp30.000</td>
+                      <td>
+                        <a href="#" class="badge bg-info text-white"><i class="fas fa-edit"></i> Ubah</a>
+                        <a href="#" class="badge bg-danger text-white"><i class="fas fa-trash"></i> Hapus</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Barista</td>
+                      <td>Rp130.000</td>
+                      <td>Rp25.000</td>
+                      <td>
+                        <a href="#" class="badge bg-info text-white"><i class="fas fa-edit"></i> Ubah</a>
+                        <a href="#" class="badge bg-danger text-white"><i class="fas fa-trash"></i> Hapus</a>
+                      </td>
+                    </tr>
+                    <!-- Tambahkan data dummy lainnya jika diperlukan -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Page Content -->
+
+      <!-- Footer -->
+      <div id="footer-placeholder"></div>
+    </div>
+  </div>
+
+  <!-- Load Template Scripts -->
+  <script>
+    function loadTemplate(id, file) {
+      fetch("template/" + file)
+        .then(res => res.text())
+        .then(html => document.getElementById(id).innerHTML = html);
+    }
+
+    loadTemplate("header-placeholder", "header.html");
+    loadTemplate("sidebar-placeholder", "sidebar.html");
+    loadTemplate("footer-placeholder", "footer.html");
+  </script>
+</body>
+</html>
