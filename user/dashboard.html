@@ -1,19 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - YourTea</title>
+
+  <!-- Bootstrap & FontAwesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f8f9fc;
+    }
+
+    .sidebar {
+      background-color: #198754;
+      min-height: 100vh;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 991.98px) {
+      #sidebar-placeholder {
+        position: fixed;
+        z-index: 1040;
+        top: 0;
+        bottom: 0;
+        width: 240px;
+        background: #198754;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      #sidebar-placeholder.show {
+        transform: translateX(0);
+      }
+
+      .offcanvas-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1030;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar + Main Content -->
 <div class="d-flex">
+  
   <!-- Sidebar -->
   <div id="sidebar-placeholder"></div>
 
   <!-- Main Content -->
   <div class="flex-grow-1">
-    <!-- Header -->
-    <div id="header-placeholder"></div>
+    
+    <!-- Topbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-4 py-3">
+      <div class="container-fluid">
+        <!-- Hamburger -->
+        <button class="btn d-lg-none me-2" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
 
-    <!-- Topbar (di dalam konten) -->
-    <nav class="navbar navbar-light bg-white border-bottom mb-4 shadow-sm px-3">
-      <h5 class="m-0 fw-bold text-success">Dashboard</h5>
+        <!-- Page Title -->
+        <h5 class="m-0 fw-bold text-success flex-grow-1" id="page-title">Dashboard</h5>
+
+        <!-- User Info -->
+        <div class="d-none d-md-block">
+          <span class="me-3 fw-bold">Neta Marnita</span>
+          <a href="../index.html" class="btn btn-outline-danger btn-sm"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
+        </div>
+      </div>
     </nav>
 
     <!-- Page Content -->
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4 mt-4">
       <div class="card mx-auto mb-5" style="max-width: 800px;">
         <div class="card-header bg-primary text-white fw-bold">Data Karyawan</div>
         <div class="card-body">
@@ -41,7 +116,7 @@
   </div>
 </div>
 
-<!-- Template loader -->
+<!-- JS & Template Loader -->
 <script>
   function loadTemplate(id, file) {
     fetch("template/" + file)
@@ -49,7 +124,33 @@
       .then(html => document.getElementById(id).innerHTML = html);
   }
 
-  loadTemplate("header-placeholder", "header.html");
   loadTemplate("sidebar-placeholder", "sidebar.html");
   loadTemplate("footer-placeholder", "footer.html");
+
+  // Sidebar Toggle (mobile)
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar-placeholder');
+
+    toggleBtn?.addEventListener('click', function () {
+      sidebar.classList.toggle('show');
+
+      if (sidebar.classList.contains('show')) {
+        const backdrop = document.createElement('div');
+        backdrop.classList.add('offcanvas-backdrop');
+        backdrop.addEventListener('click', () => {
+          sidebar.classList.remove('show');
+          backdrop.remove();
+        });
+        document.body.appendChild(backdrop);
+      } else {
+        const existingBackdrop = document.querySelector('.offcanvas-backdrop');
+        if (existingBackdrop) existingBackdrop.remove();
+      }
+    });
+  });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
